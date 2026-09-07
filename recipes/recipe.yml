@@ -6,8 +6,8 @@ name: dffo-bluebuild-os
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: latest # You can pin to a specific version of Fedora as well
+base-image: ghcr.io/ublue-os/base-main
+image-version: 44 # You can pin to a specific version of Fedora as well
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -18,7 +18,56 @@ modules:
         destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
 
   - type: dnf
+    group-install:
+      packages:
+        - sway-desktop-environment
+    install:
+      packages:
+        - tmux
+        - wl-kbptr
+        - ripgrep
+        - vim
+        - emacs
+        - fastfetch
+        - featherpad
+        - rclone
+        - dconf-editor
+        - racket
+        - xwayland-satellite
+        - gh
+        - pipx
+        - samba
+        - docker
+        - docker-compose
+        - runc
+        - distrobox
+        - freerdp
+        - btop
+        - chezmoi
+        - tldr
+        - rsyslog
+        - caja
+        - caja-open-terminal
+        - gvfs-mtp
+        - clang
+        - clang-tools-extra
+        - inotify-tools
+        - sysstat
+        - iotop-c
+        - lm_sensors
+        - noctalia
+        - gnome-disk-utility
+        - virt-manager
+        - qemu-kvm
+        - qemu
+        - libvirt
+        - sshfs
+        - terminus-fonts-console
+        - ddcutil
+
+  - type: dnf
     repos:
+      cleanup: true
       copr:
         - atim/starship
     install:
@@ -32,6 +81,15 @@ modules:
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
+  - type: dnf
+    repos:
+      cleanup: true
+      copr:
+        - marcelohdez/dim
+    install:
+      packages:
+        - dim-screen
+
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
@@ -41,5 +99,14 @@ modules:
           - org.mozilla.firefox
           - org.gnome.Loupe
       - scope: user # Also add Flathub user repo, but no user packages
+
+  - type: systemd
+    system:
+      enabled:
+        - rsyslog.service
+        - smb.service
+        - nmb.service
+        - podman.socket
+        - libvirtd.service
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully

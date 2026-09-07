@@ -1,8 +1,41 @@
 # dffo-bluebuild-os &nbsp; [![bluebuild build badge](https://github.com/dffo/dffo-bluebuild-os/actions/workflows/build.yml/badge.svg)](https://github.com/dffo/dffo-bluebuild-os/actions/workflows/build.yml)
 
-See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
+Personal Fedora Sway Atomic 44 image, migrated from `custom-ublue-setup`.
+Published as `ghcr.io/dffo/dffo-bluebuild-os:latest` by the existing BlueBuild workflow.
 
-After setup, it is recommended you update this README to describe your custom image.
+## Customization
+
+- `recipes/recipe.yml`: Fedora packages, the dim-screen COPR, enabled services,
+  file installation, image signing, and final bootc lint.
+- `files/system/etc/`: journald/syslog persistence, console font, libvirt polkit
+  permissions, libinput scrolling, DDC udev permissions, SDDM scaling, and SysRq.
+- `files/scripts/install-codecs.sh`: RPM Fusion repositories and the original
+  multimedia/FFmpeg transactions, retained as a script to preserve their ordering
+  and package-manager options.
+
+The Fedora Sway base supplies the desktop. The recipe retains the source image's
+package selection, removes dunst, and enables rsyslog, Samba (smb/nmb), the Podman
+socket, and libvirtd. The dim-screen COPR is disabled again after installation.
+Template-only packages and Flatpak installation were removed.
+
+v4l2loopback is not installed: its installation was commented out in the source
+repository. Enabling it needs a separate kernel-matched build or a supported base;
+simply adding BlueBuild's akmods module is not a supported path on stock Fedora.
+The old optional disk/ISO build tooling is not part of this image recipe; see the
+BlueBuild ISO instructions below if installation media is needed.
+
+## Build and signing
+
+The existing GitHub Actions workflow builds daily and on pushes/pull requests.
+Keep this repository's `cosign.pub` and matching `SIGNING_SECRET` GitHub Actions
+secret. Migration does not generate or replace signing keys. The presence and
+validity of the GitHub secret must be confirmed by a signed build.
+
+This is a new image address, so an installation tracking the old repository will
+need an explicit switch after the new image has built successfully. No host switch
+is performed by editing this repository. The instructions below are the template's
+rpm-ostree installation path; use the appropriate bootc path if your host is managed
+by bootc instead.
 
 ## Installation
 
