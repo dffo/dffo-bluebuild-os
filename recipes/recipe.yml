@@ -98,6 +98,48 @@ modules:
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
           - org.gnome.Loupe
+          - com.belmoussaoui.Decoder
+          - com.calibre_ebook.calibre
+          - com.github.finefindus.eyedropper
+          - com.github.flxzt.rnote
+          - com.github.jeromerobert.pdfarranger
+          - com.github.k4zmu2a.spacecadetpinball
+          - com.github.tchx84.Flatseal
+          - com.github.wwmm.easyeffects
+          - com.github.xournalpp.xournalpp
+          - com.obsproject.Studio
+          - com.polyphone_soundfonts.polyphone
+          - com.usebottles.bottles
+          - com.valvesoftware.Steam
+          - com.vixalien.sticky
+          - io.github.celluloid_player.Celluloid
+          - io.github.flattool.Warehouse
+          - io.github.nokse22.ultimate-tic-tac-toe
+          - io.github.plrigaux.sysd-manager
+          - io.missioncenter.MissionCenter
+          - net.sourceforge.dmidiplayer
+          - org.DolphinEmu.dolphin-emu
+          - org.chromium.Chromium
+          - org.develz.Crawl
+          - org.gnome.Calendar
+          - org.gnome.Chess
+          - org.gnome.Evolution
+          - org.gnome.Shotwell
+          - org.gnome.SimpleScan
+          - org.gnome.baobab
+          - org.gnome.clocks
+          - org.gnome.font-viewer
+          - org.inkscape.Inkscape
+          - org.kde.ark
+          - org.kde.kdenlive
+          - org.kde.kweather
+          - org.kde.okular
+          - org.libreoffice.LibreOffice
+          - org.libretro.RetroArch
+          - org.pulseaudio.pavucontrol
+          - org.remmina.Remmina
+          - org.rncbc.qpwgraph
+          - org.torproject.torbrowser-launcher
       - scope: user # Also add Flathub user repo, but no user packages
 
   - type: systemd
