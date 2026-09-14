@@ -1,5 +1,5 @@
 brew "libqalculate"
-brew "racket-minimal"
+brew "minimal-racket"
 brew "ripgrep"
 brew "fastfetch"
 brew "rclone"
