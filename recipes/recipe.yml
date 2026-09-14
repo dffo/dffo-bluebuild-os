@@ -23,35 +23,22 @@ modules:
         - sway-desktop-environment
     install:
       packages:
-        - tmux
         - wl-kbptr
-        - ripgrep
         - vim
         - emacs
-        - fastfetch
         - featherpad
-        - rclone
-        - dconf-editor
-        - racket
         - xwayland-satellite
-        - gh
-        - pipx
         - samba
         - docker
         - docker-compose
         - runc
         - distrobox
         - freerdp
-        - btop
         - chezmoi
-        - tldr
         - rsyslog
         - caja
         - caja-open-terminal
         - gvfs-mtp
-        - clang
-        - clang-tools-extra
-        - inotify-tools
         - sysstat
         - iotop-c
         - lm_sensors
@@ -69,26 +56,16 @@ modules:
     repos:
       cleanup: true
       copr:
-        - atim/starship
+        - marcelohdez/dim
     install:
       packages:
-        - micro
-        - starship
+        - dim-screen
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - dunst
         - Thunar
-
-  - type: dnf
-    repos:
-      cleanup: true
-      copr:
-        - marcelohdez/dim
-    install:
-      packages:
-        - dim-screen
 
   - type: default-flatpaks
     configurations:
@@ -97,50 +74,20 @@ modules:
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - org.mozilla.firefox
-          - org.gnome.Loupe
-          - com.belmoussaoui.Decoder
-          - com.calibre_ebook.calibre
-          - com.github.finefindus.eyedropper
-          - com.github.flxzt.rnote
-          - com.github.jeromerobert.pdfarranger
-          - com.github.k4zmu2a.spacecadetpinball
-          - com.github.tchx84.Flatseal
-          - com.github.wwmm.easyeffects
-          - com.github.xournalpp.xournalpp
-          - com.obsproject.Studio
-          - com.polyphone_soundfonts.polyphone
-          - com.usebottles.bottles
-          - com.valvesoftware.Steam
-          - com.vixalien.sticky
-          - io.github.celluloid_player.Celluloid
-          - io.github.flattool.Warehouse
-          - io.github.nokse22.ultimate-tic-tac-toe
-          - io.github.plrigaux.sysd-manager
-          - io.missioncenter.MissionCenter
-          - net.sourceforge.dmidiplayer
-          - org.DolphinEmu.dolphin-emu
-          - org.chromium.Chromium
-          - org.develz.Crawl
-          - org.gnome.Calendar
-          - org.gnome.Chess
-          - org.gnome.Evolution
-          - org.gnome.Shotwell
-          - org.gnome.SimpleScan
-          - org.gnome.baobab
-          - org.gnome.clocks
-          - org.gnome.font-viewer
-          - org.inkscape.Inkscape
-          - org.kde.ark
-          - org.kde.kdenlive
-          - org.kde.kweather
-          - org.kde.okular
-          - org.libreoffice.LibreOffice
-          - org.libretro.RetroArch
-          - org.pulseaudio.pavucontrol
-          - org.remmina.Remmina
+          - ca.desrt.dconf-editor
           - org.rncbc.qpwgraph
-          - org.torproject.torbrowser-launcher
+          - org.pulseaudio.pavucontrol
+          - org.gnome.baobab
+          - com.github.tchx84.Flatseal
+          - io.missioncenter.MissionCenter
+          - com.github.wwmm.easyeffects
+          - io.github.flattool.Warehouse
+          - io.github.plrigaux.sysd-manager
+          - org.remmina.Remmina
       - scope: user # Also add Flathub user repo, but no user packages
+
+  - type: justfiles
+    validate: true
 
   - type: brew
     nofile-limits: true # increase nofile limits
