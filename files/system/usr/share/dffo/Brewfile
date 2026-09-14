@@ -12,6 +12,7 @@ brew "micro"
 brew "starship"
 brew "btop"
 brew "llvm"
+brew "uv"
 
 flatpak "org.DolphinEmu.dolphin-emu"
 flatpak "org.gnome.Chess"
