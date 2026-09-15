@@ -1,4 +1,5 @@
 brew "libqalculate"
+brew "qalculate-gtk"
 brew "minimal-racket"
 brew "ripgrep"
 brew "fastfetch"
