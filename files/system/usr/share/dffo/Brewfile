@@ -15,6 +15,7 @@ brew "btop"
 brew "llvm"
 brew "uv"
 brew "miller"
+brew "ripgrep"
 
 flatpak "org.DolphinEmu.dolphin-emu"
 flatpak "org.gnome.Chess"
